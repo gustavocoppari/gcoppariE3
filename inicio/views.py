@@ -61,3 +61,8 @@ def crear_persona(request):
             return render(request, 'inicio/crear_persona.html', {'error': 'Por favor completa todos los campos'})
 
     return render(request, 'inicio/crear_persona.html',{'form': formulario})
+
+
+
+def about(request):
+    return render(request, 'inicio/about.html')
