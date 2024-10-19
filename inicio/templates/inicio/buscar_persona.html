@@ -1,0 +1,33 @@
+{% extends "inicio/index.html" %}
+{% load static %}
+
+{% block title_head %}             
+   Buscar Persona
+{% endblock title_head%} 
+
+
+{% block h1_header %}
+    Buscar Persona
+{% endblock %}    
+
+{% block main %}
+
+
+<form method="GET" action="">
+    <h2> </h2>
+    {{ form.as_p }}
+    <button type="submit">Buscar</button>
+</form>
+
+{% if persona %}
+    <h2>Resultados de la búsqueda:</h2>
+    <ul>
+        {% for p in persona %}
+            <li>{{ p.nombre }} {{ p.apellido }} - {{ p.empresa }}</li>
+        {% endfor %}
+    </ul>
+{% else %}
+    <p>No se encontraron resultados.</p>
+{% endif %}
+
+{% endblock main %}
