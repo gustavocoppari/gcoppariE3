@@ -65,7 +65,7 @@ def crear_persona(request):
 
 
 def about(request):
-    return render(request, 'inicio/about.html')
+     render(request, 'inicio/about.html')
 
 
 def verpersona(request,persona_id):
@@ -115,4 +115,6 @@ def editarpersona(request, persona_id):
         'persona': persona,
         'form': formulario
     })
+
+
 

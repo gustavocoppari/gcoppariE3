@@ -1,4 +1,5 @@
 from django.urls import path
+
 from inicio.views import (
     inicio, 
     buscar_persona, 
@@ -6,6 +7,9 @@ from inicio.views import (
     about,verpersona, 
     eliminarpersona, 
     editarpersona)
+
+from inicio.views import inicio, buscar_persona, crear_persona, about
+
 
 
 app_name ='inicio'
@@ -19,3 +23,5 @@ urlpatterns = [
     path('editarpersona/<int:persona_id>/', editarpersona, name='editarpersona')
     
     ]
+
+ 
