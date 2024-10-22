@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+
+{% load static %}
+
+{% block title_head %}              
+  Ver Salones 
+{% endblock title_head%} 
+
+
+{% block h1_header %}
+  {{fiesta}}
+{% endblock %}    
+
+
+{% block main %}
+<ul>
+    <li>
+       Salon: {{fiesta.salon}} 
+    </li>
+    <li>
+       direccion: {{fiesta.direccion}}
+    </li>
+    <li>
+       capacida: {{fiesta.capacidad}} 
+    </li>
+
+</ul>   
+
+{% endblock main%}   

@@ -1,0 +1,34 @@
+{% extends "Base.html" %}
+{% load static %}
+
+{% block title_head %}             
+   Eliminar Salon
+{% endblock title_head%} 
+
+
+{% block h1_header %}
+Eliminar Salon
+{% endblock %}    
+
+{% block main %}
+
+<form action="{% url 'eventos:eliminar_fiesta' fiesta.id %}" method="POST" >
+
+    {% csrf_token %} 
+
+    <br><br>
+    <p> Confirma eliminar Salon? </p>
+
+
+   
+<input type="submit" value="Confirmar">    
+ 
+    
+
+
+</form>
+
+
+
+
+{% endblock main %}

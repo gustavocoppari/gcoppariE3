@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+
+{% load static %}
+
+{% block title_head %}              
+  Ver invitado 
+{% endblock title_head%} 
+
+
+{% block h1_header %}
+  {{p}}
+{% endblock %}    
+
+
+{% block main %}
+<ul>
+    <li>
+       DNI: {{p.dni}} 
+    </li>
+    <li>
+       Apellido: {{p.apellido}}
+    </li>
+    <li>
+       Nombre: {{p.nombre}} 
+    </li>
+
+</ul>   
+
+{% endblock main%}   

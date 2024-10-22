@@ -1,25 +1,23 @@
-{% extends "inicio/index.html" %}
-{% load static %}
+{% extends "Base.html" %}
+
 
 {% block title_head %}             
-   Nuevo Invitado
+   Nuevos Salones
 {% endblock title_head%} 
 
 
 {% block h1_header %}
-    Nuevo Invitado
+  Nuevos Salones
 {% endblock %}    
 
 {% block main %}
 
-<form action="{% url 'inicio:crear_persona' %}" method="POST" >
+<form action="{% url 'eventos:crear_fiesta' %}" method="POST" >
 
     {% csrf_token %} 
 
     <br><br>
-    Ingresa tu invitado:
-    <br><br>
-  
+  {% comment %} 
     <label for="id_dni">DNI:</label>
     <input type="number" name="dni" id="id_dni" required="false">
 
@@ -32,16 +30,16 @@
     <label for="id_empresa">Empresa:</label>
     <input type="text" name="empresa" id="id_empresa" required="false">
 
-    <button type="submit">Enviar</button>
+    <button type="submit">Crear</button>
+{% endcomment %}
 
-{% comment %} 
    {{form}}
 
    
-<input type="submit" value="Enviar">    
+<input type="submit" value="Crear">    
  
-    <button>Enviar</button> 
-{% endcomment %}
+    
+
 
 </form>
 

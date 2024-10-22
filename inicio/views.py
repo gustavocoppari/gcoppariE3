@@ -1,9 +1,9 @@
 from django.http import HttpResponse
 from django.template import Template, Context, loader
-from datetime import datetime
-from django.shortcuts import render, redirect
+
+from django.shortcuts import render, redirect, get_object_or_404
 from inicio.models import Persona
-from inicio.forms import CrearPersonaFormulario,BuscarPersonaFormulario
+from inicio.forms import CrearPersonaFormulario,BuscarPersonaFormulario,EditarPersonaFormulario
 
 
 def inicio(request):
@@ -61,3 +61,58 @@ def crear_persona(request):
             return render(request, 'inicio/crear_persona.html', {'error': 'Por favor completa todos los campos'})
 
     return render(request, 'inicio/crear_persona.html',{'form': formulario})
+
+
+
+def about(request):
+    return render(request, 'inicio/about.html')
+
+
+def verpersona(request,persona_id):
+     # Buscamos la persona por su ID o devolvemos un 404 si no existe)
+    persona=Persona.objects.get( id=persona_id)
+     # Pasamos la persona al template
+    return render(request, 'inicio/verpersona.html', {'p': persona})
+
+
+
+
+
+def eliminarpersona(request,persona_id):
+   
+    persona=Persona.objects.get( id=persona_id)
+    persona.delete()
+    return redirect('inicio:buscar_persona')
+
+          
+            
+           
+
+
+def editarpersona(request, persona_id):
+    # Obtener la persona con el ID proporcionado
+    persona = Persona.objects.get(id=persona_id)
+    
+    # Inicializar el formulario con los datos actuales de la persona
+    formulario = EditarPersonaFormulario(initial={
+        'dni': persona.dni,
+        'nombre': persona.nombre,
+        'apellido': persona.apellido,
+        'empresa': persona.empresa
+    })
+    
+    # Si la solicitud es POST (se ha enviado el formulario)
+    if request.method == 'POST':
+        formulario = EditarPersonaFormulario(request.POST, instance=persona)
+        
+        # Si el formulario es válido, actualizamos los datos de la persona
+        if formulario.is_valid():
+            formulario.save()  # Guardamos los datos actualizados
+            return redirect('inicio:buscar_persona')  # Redirigimos tras guardar
+    
+    # Renderizamos la plantilla con el formulario
+    return render(request, 'inicio/editarpersona.html', {
+        'persona': persona,
+        'form': formulario
+    })
+
