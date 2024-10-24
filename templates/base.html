@@ -26,16 +26,24 @@
         <!-- Navigation-->
         <nav class="navbar navbar-light bg-light static-top">
             <div class="container">
-                <a class="navbar-brand" href={% url "inicio:inicio"%}>Inicio</a>
-                <a class="navbar-brand" href={% url "inicio:crear_persona" %}>Nuevo invitado</a>
-                <a class="navbar-brand" href={% url "inicio:buscar_persona" %}>Lista invitado</a>
-                <a class="navbar-brand" href={% url "eventos:crear_fiesta" %}>Nuevo salones</a>
-                <a class="navbar-brand" href={% url "eventos:listado_fiesta" %}> Salones </a>
-                <a class="navbar-brand" href={% url "inicio:about" %}>About</a>
-                <a class="navbar-brand" href={% url "inicio:inicio"%}>Incio</a>
-                <a class="navbar-brand" href={% url "inicio:crear_persona" %}>Crear persona</a>
-                <a class="navbar-brand" href={% url "inicio:buscar_persona" %}>Buscar persona</a>
-                <a class="navbar-brand" href={% url "inicio:about" %}>About</a>
+                {% if request.user.is_authenticated %}
+                    <a class="navbar-brand" href={% url "inicio:inicio" %}>Inicio</a>
+                    <a class="navbar-brand" href={% url "inicio:crear_persona" %}>Nuevo invitado</a>
+                    <a class="navbar-brand" href={% url "inicio:buscar_persona" %}>Lista invitado</a>
+                    <a class="navbar-brand" href={% url "eventos:crear_fiesta" %}>Nuevo salones</a>
+                    <a class="navbar-brand" href={% url "eventos:listado_fiesta" %}>Salones</a>
+                    <a class="navbar-brand" href={% url "inicio:about" %}>About</a>
+            
+                    <a class="navbar-brand" href="#">{{ request.user.username }}</a>
+                    <form action="{% url 'usuarios:logout' %}" method="post">
+                        {% csrf_token %}
+                        <input type="submit" class="btn btn-secondary" value="Cerrar Sesión">
+                    </form>
+                {% else %}
+                    <p class="navbar-text">Por favor, inicia sesión para acceder a las opciones del menú.</p>
+                    <a class="btn btn-primary" href="{% url 'usuarios:login' %}">Login</a>
+                    <a class="btn btn-info" href="{% url 'usuarios:register' %}">Registrarse</a>
+                {% endif %}
             </div>
         </nav>
         <!-- Masthead-->

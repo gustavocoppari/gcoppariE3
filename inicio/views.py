@@ -4,6 +4,7 @@ from django.template import Template, Context, loader
 from django.shortcuts import render, redirect, get_object_or_404
 from inicio.models import Persona
 from inicio.forms import CrearPersonaFormulario,BuscarPersonaFormulario,EditarPersonaFormulario
+from django.contrib.auth.decorators import login_required
 
 
 def inicio(request):
@@ -26,19 +27,6 @@ def buscar_persona(request):
         'form': formulario,
         'persona': persona,  # Pasamos la variable persona al template
     })
-
-
-
-# def buscar_persona(request):
-    
-#     formulario=BuscarPersonaFormulario(request.GET)
-#     if formulario.is_valid():
-#         apellido=formulario.cleaned_data.get('apellido')
-#         empresa=formulario.cleaned_data.get('empresa')
-#         persona=Persona.objects.filter(apellido__icontains=apellido,empresa__icontains=empresa)
-          
-#     return render(request,'inicio/buscar_persona.html',{'apellido': apellido,'form':formulario})
-
 
 
 
