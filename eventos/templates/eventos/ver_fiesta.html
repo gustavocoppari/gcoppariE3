@@ -3,7 +3,7 @@
 {% load static %}
 
 {% block title_head %}              
-  Ver Salones 
+  Ver Sala 
 {% endblock title_head%} 
 
 
@@ -23,6 +23,14 @@
     <li>
        capacida: {{fiesta.capacidad}} 
     </li>
+    <li>
+      Imagen:
+      {% if fiesta.imagen %}
+          <img src="{{ fiesta.imagen.url }}" alt="Imagen de {{ fiesta.salon }}" style="max-width: 200px; max-height: 200px;">
+      {% else %}
+          <p>No hay imagen disponible para esta sala.</p>
+      {% endif %}
+   </li>
 
 </ul>   
 

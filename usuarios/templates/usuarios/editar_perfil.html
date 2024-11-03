@@ -1,0 +1,30 @@
+{% extends "Base.html" %}
+
+{% block title_head %}             
+Editar perfile
+
+{% endblock title_head%} 
+
+
+{% block h1_header %}
+Editar perfile: {{request.user.username}}
+{% endblock %}    
+
+
+{% block main %}
+
+
+<form action="{% url 'usuarios:editar_perfil' %}" method="post" enctype="multipart/form-data">
+    {% csrf_token %} 
+
+    {{form}}
+    <input type="submit" value="Editar">
+
+
+</form>
+
+<p>
+<a  href={% url "usuarios:cambiar_pass" %}>Cambiar Pass</a>
+</p>
+
+{% endblock main %}

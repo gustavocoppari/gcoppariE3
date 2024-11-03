@@ -52,8 +52,9 @@ def crear_persona(request):
 
 
 
+
 def about(request):
-     render(request, 'inicio/about.html')
+    return render(request, 'inicio/about.html')
 
 
 def verpersona(request,persona_id):

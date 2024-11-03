@@ -9,4 +9,5 @@ urlpatterns = [
     path('fiestas/<int:pk>', views.VerFiesta.as_view(), name='ver_fiesta'),
     path('fiestas/<int:pk>/editar', views.EditarFiesta.as_view(), name='editar_fiesta'),
     path('fiestas/<int:pk>/eliminar', views.EliminarFiesta.as_view(), name='eliminar_fiesta')
+    
 ]

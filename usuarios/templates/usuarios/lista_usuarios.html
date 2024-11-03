@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+
+{% block title_head %}Lista de Usuarios{% endblock %}
+
+{% block main %}
+<h2>Lista de Usuarios</h2>
+<table>
+    <tr>
+        <th>Nombre de Usuario</th>
+        <th>Email</th>
+        <th>Acciones</th>
+    </tr>
+    {% for usuario in usuarios %}
+    <tr>
+        <td>{{ usuario.username }}</td>
+        <td>{{ usuario.email }}</td>
+        <td><a href="{% url 'usuarios:editar_usuario' usuario.id %}">Editar</a></td>
+    </tr>
+    {% endfor %}
+</table>
+{% endblock %}

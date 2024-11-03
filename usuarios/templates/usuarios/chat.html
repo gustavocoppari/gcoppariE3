@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+
+{% block title_head %}Chat{% endblock title_head %}
+
+{% block h1_header %}
+Chat
+{% endblock %}
+
+{% block main %}
+<h1>Chat</h1>
+
+<div id="chat-window">
+    {% for message in messages %}
+        <p>
+            <strong>{{ message.user.username }}:</strong> {{ message.content }}
+            {% if request.user.is_staff %}  <!-- Solo el administrador ve el botón de eliminar -->
+                <a href="{% url 'usuarios:delete_message' message.id %}" style="color: red; margin-left: 10px;">Eliminar</a>
+            {% endif %}
+        </p>
+    {% endfor %}
+</div>
+
+<form method="post" action="{% url 'usuarios:chat' %}">
+    {% csrf_token %}
+    <input type="text" name="content" placeholder="Escribe tu mensaje aquí" required>
+    <button type="submit">Enviar</button>
+</form>
+{% endblock %}

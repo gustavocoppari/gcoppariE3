@@ -1,49 +1,23 @@
 {% extends "Base.html" %}
 
-
 {% block title_head %}             
-   Nuevos Salones
-{% endblock title_head%} 
-
+   Nueva Sala
+{% endblock title_head %} 
 
 {% block h1_header %}
-  Nuevos Salones
+  Nueva Sala
 {% endblock %}    
 
 {% block main %}
 
-<form action="{% url 'eventos:crear_fiesta' %}" method="POST" >
-
+<form action="{% url 'eventos:crear_fiesta' %}" method="POST" enctype="multipart/form-data">
     {% csrf_token %} 
 
     <br><br>
-  {% comment %} 
-    <label for="id_dni">DNI:</label>
-    <input type="number" name="dni" id="id_dni" required="false">
 
-    <label for="id_nombre">Nombre:</label>
-    <input type="text" name="nombre" id="id_nombre" required="false">
-
-    <label for="id_apellido">Apellido:</label>
-    <input type="text" name="apellido" id="id_apellido" required="false">
-
-    <label for="id_empresa">Empresa:</label>
-    <input type="text" name="empresa" id="id_empresa" required="false">
-
-    <button type="submit">Crear</button>
-{% endcomment %}
-
-   {{form}}
-
+   {{ form }}
    
-<input type="submit" value="Crear">    
- 
-    
-
-
+   <input type="submit" value="Crear">    
 </form>
-
-
-
 
 {% endblock main %}

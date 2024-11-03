@@ -6,6 +6,7 @@ class Fiesta(models.Model):
     direccion=models.CharField(max_length=20)
     construido=models.DateTimeField()
     capacidad=models.IntegerField()
+    imagen = models.ImageField(upload_to='imagenes_fiestas/', blank=True, null=True)
     
     
     def __str__(self):
