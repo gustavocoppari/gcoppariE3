@@ -16,7 +16,9 @@ urlpatterns = [
     path('editar-usuario/<int:usuario_id>/', editar_usuario, name='editar_usuario'),
     path('lista-usuarios/', lista_usuarios, name='lista_usuarios'),
     path('chat/', views.chat_view, name='chat'),
-    path('delete_message/<int:message_id>/', views.delete_message, name='delete_message')
+    path('delete_message/<int:message_id>/', views.delete_message, name='delete_message'),
+    path('borrar/<int:usuario_id>/', views.borrar_usuario, name='borrar_usuario')
+
     
     # chat 
     #path('chat/', views.chat_view, name='chat'),

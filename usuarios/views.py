@@ -9,6 +9,8 @@ from django.contrib.auth.views import PasswordChangeView
 from django.urls import reverse_lazy
 from usuarios.models import DatosExtra
 
+from django.contrib.auth.models import User
+
 
 from .models import Message
 
@@ -49,16 +51,22 @@ def login(request):
 
 
 
+
 def register(request):
-    form = FormularioDeCreacionDeUsuario()
     if request.method == 'POST':
-        form = FormularioDeCreacionDeUsuario(request.POST)
+        form = FormularioDeCreacionDeUsuario (request.POST)
         if form.is_valid():
-            form.save()
-          #  messages.success(request, 'Usuario creado exitosamente. ¡Ahora puedes iniciar sesión!')
-            return redirect('usuarios:login')
-    
+            username = form.cleaned_data.get('username')
+            if User.objects.filter(username=username).exists():
+                messages.error(request, 'El nombre de usuario ya está en uso. Elige otro.')
+            else:
+                form.save()
+                messages.success(request, 'Usuario registrado exitosamente.')
+                return redirect('usuarios:login')
+    else:
+        form = FormularioDeCreacionDeUsuario ()
     return render(request, 'usuarios/register.html', {'form': form})
+
 
 
 
@@ -188,3 +196,13 @@ def delete_message(request, message_id):
     message = get_object_or_404(Message, id=message_id)
     message.delete()
     return redirect('usuarios:chat')
+
+
+
+
+
+
+def borrar_usuario(request, usuario_id):
+    usuario = get_object_or_404(User, id=usuario_id)
+    usuario.delete()
+    return redirect('usuarios:lista_usuarios')
