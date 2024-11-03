@@ -1,6 +1,5 @@
 # Bienvenidos al Proyecto de Gustavo Coppari.
 # Este sistema gestiona los ingresos de usuarios para administrar un coworking.
-# en este sistema un usuario puede registrar los empleados que podran utlizar salas y generar las salas de reunion/espacios de trabajo.
-# Enviar mensajes al equipo de trabajo que utilizaran el sistema.
-# El administrado podra Gestionar usuarios.
-
+# En este sistema, un usuario puede registrar a los empleados que podrán utilizar las salas y crear salas de reunión/espacios de trabajo.
+# También permite enviar mensajes al equipo de trabajo que utilizará el sistema.
+# El administrador podrá gestionar usuarios.
